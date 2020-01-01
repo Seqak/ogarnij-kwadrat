@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/logo-ogarnijkwadrat.png">
+    <title>Dodaj mieszkanie - Ogarnij Kwadrat</title>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="../assets/libs/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/libs/jquery-minicolors/jquery.minicolors.css">
+    <link rel="stylesheet" type="text/css" href="../assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/libs/quill/dist/quill.snow.css">
+    <link href="../dist/css/style.min.css" rel="stylesheet">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body>
+    <!-- Preloader - style you can find in spinners.css -->
+    {% include 'includes/preloader.html' %}
+
+    <div id="main-wrapper">
+
+        {% include 'includes/header.html' %}
+  
+        {% include 'includes/sidemenu.html' %}
+
+        <div class="page-wrapper">
+
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title m-b-0  m-t-0">Dodaj mieszkanie</h3>
+                        <div class="col-12 d-flex no-block align-items-center">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <form class="form-horizontal" action="../controllers/newflat.php" method="POST">
+
+                            <div class="card">
+                                <div class="card-body">
+                                
+<!-- 
+                                    {% if errors.0 == true %}
+                                    
+                                    {% else %}
+
+                                    {% endif %} -->
+
+                                    <!-- CITY -->
+                                    {% if errors.0 == true %}
+                                        <div class="form-group">
+                                            <label>Miasto*</label>
+                                            <input type="text" class="form-control is-invalid" name="city">
+                                            <div class="invalid-feedback">
+                                                Pole Miasto nie może być puste
+                                            </div> 
+                                        </div>
+                                    {% else %}
+                                        <div class="form-group">
+                                            <label>Miasto*</label>
+                                            <input type="text" class="form-control" name="city">
+                                        </div>
+                                    {% endif %}
+
+                                    <!-- STREET -->
+                                    {% if errors.1 == true %}
+                                        <div class="form-group">
+                                            <label>Ulica*</label>
+                                            <input type="text" class="form-control is-invalid" name="street">
+                                            <div class="invalid-feedback">
+                                                Pole Ulica nie może być puste
+                                            </div>
+                                        </div>
+                                    {% else %}
+                                        <div class="form-group">
+                                            <label>Ulica*</label>
+                                            <input type="text" class="form-control" name="street">
+                                        </div>
+                                    {% endif %}
+
+                                    <!-- NUMBER -->
+                                    {% if errors.2 == true %}
+                                        <div class="form-group">
+                                            <label>Numer mieszkania*</label>
+                                            <input type="text" class="form-control is-invalid" name="flat-number">
+                                            <div class="invalid-feedback">
+                                                Pole Numer mieszkania nie może być puste
+                                            </div>
+                                        </div>
+                                    {% else %}
+                                        <div class="form-group">
+                                            <label>Numer mieszkania*</label>
+                                            <input type="text" class="form-control" name="flat-number">
+                                        </div>
+                                    {% endif %}
+
+                                    <!-- ROOMS -->
+                                    {% if errors.4 == true %}
+                                        <div class="custom-control custom-checkbox mr-sm-2">
+                                            <input type="checkbox" class="custom-control-input" id="customControlAutosizing2" name="flat-checkbox" checked>
+                                            <label class="custom-control-label" for="customControlAutosizing2">Mieszkanie z pokojami na wynajem</label> <br>
+                                            <small>Zaznacz jeśli w danym mieszakniu wynajmujesz pokoje różnym najemcom.</small>
+                                        </div>
+                                
+                                        <div class="form-group m-t-15">
+                                            <label id="roomamount">Ilość pokoi</label>
+                                            <input type="number" class="form-control is-invalid" name="rooms" id="roomsinput" value="1" min="1" style="border-color: #e9ecef">
+                                            <div class="invalid-feedback">
+                                                Podaj właściwą ilość pokoi
+                                            </div>
+                                        </div>
+                                    {% else %}
+                                        <div class="custom-control custom-checkbox mr-sm-2">
+                                            <input type="checkbox" class="custom-control-input" id="customControlAutosizing2" name="flat-checkbox">
+                                            <label class="custom-control-label" for="customControlAutosizing2">Mieszkanie z pokojami na wynajem</label> <br>
+                                            <small>Zaznacz jeśli w danym mieszakniu wynajmujesz pokoje różnym najemcom.</small>
+                                        </div>
+
+                                        <div class="form-group m-t-15">
+                                            <label id="roomamount">Ilość pokoi</label>
+                                            <input type="number" class="form-control" disabled name="rooms" id="roomsinput" value="" min="1">
+                                        </div>
+                                    {% endif %}
+                                    
+                                    <!-- ADDITIONAL INFO -->
+                                     <div class="form-group m-t-15">
+                                        <label>Informacja dodatkowa</label>
+                                        <textarea class="form-control" rows=4 name="additional-info"></textarea>
+                                    </div>
+                            
+                                </div>
+
+
+                                <div class="border-top">
+                                    <div class="card-body">
+                                        <button type="submit" class="btn btn-info" name="addFlat-submit">Zapisz</button>
+                                        <a href="#" class="btn btn-secondary">Anuluj</a>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- End Container fluid  -->
+     
+            {% include 'includes/footer.html' %}
+    
+        </div>
+
+    </div>
+
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="../assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="../assets/extra-libs/sparkline/sparkline.js"></script>
+
+    <script src="../assets/libs/select2/dist/js/select2.full.min.js"></script>
+    <script src="../assets/libs/select2/dist/js/select2.min.js"></script>
+
+    <!--Wave Effects -->
+    <script src="../dist/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="../dist/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="../dist/js/custom.min.js"></script>
+
+    <script>
+
+        $('#customControlAutosizing2').change(function(){
+
+            if ($('#customControlAutosizing2').is(':checked') == true){
+                $('#roomsinput').prop('disabled', false);
+                $('#roomamount').text('Ilość pokoi*');
+                $('#roomsinput').val('1');
+            } 
+            else {
+                $('#roomsinput').prop('disabled', true);
+                $('#roomamount').text('Ilość pokoi');
+                $('#roomsinput').val(' ');
+            }
+
+        });
+
+
+        $(".select2").select2();
+
+    </script>
+
+    
+</body>
+
+</html>
