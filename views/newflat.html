@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/logo-ogarnijkwadrat.png">
-    <title>Dodaj mieszkanie - Ogarnij Kwadrat</title>
+    <title>{{translate.Dodaj_mieszkanie}} - Ogarnij Kwadrat</title>
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="../assets/libs/select2/dist/css/select2.min.css">
     <link rel="stylesheet" type="text/css" href="../assets/libs/jquery-minicolors/jquery.minicolors.css">
@@ -45,7 +45,7 @@
                 <!-- ============================================================== -->
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title m-b-0  m-t-0">Dodaj mieszkanie</h3>
+                        <h3 class="card-title m-b-0  m-t-0">{{translate.Dodaj_mieszkanie}}</h3>
                         <div class="col-12 d-flex no-block align-items-center">
                         </div>
                     </div>
@@ -69,15 +69,15 @@
                                     <!-- CITY -->
                                     {% if errors.0 == true %}
                                         <div class="form-group">
-                                            <label>Miasto*</label>
+                                            <label>{{translate.Miasto}}*</label>
                                             <input type="text" class="form-control is-invalid" name="city">
                                             <div class="invalid-feedback">
-                                                Pole Miasto nie może być puste
+                                                {{translate.Pole_Miasto_nie_może_być_puste}}
                                             </div> 
                                         </div>
                                     {% else %}
                                         <div class="form-group">
-                                            <label>Miasto*</label>
+                                            <label>{{translate.Miasto}}*</label>
                                             <input type="text" class="form-control" name="city">
                                         </div>
                                     {% endif %}
@@ -85,15 +85,15 @@
                                     <!-- STREET -->
                                     {% if errors.1 == true %}
                                         <div class="form-group">
-                                            <label>Ulica*</label>
+                                            <label>{{translate.Ulica}}*</label>
                                             <input type="text" class="form-control is-invalid" name="street">
                                             <div class="invalid-feedback">
-                                                Pole Ulica nie może być puste
+                                                {{translate.Pole_Ulica_nie_może_być_puste}}
                                             </div>
                                         </div>
                                     {% else %}
                                         <div class="form-group">
-                                            <label>Ulica*</label>
+                                            <label>{{translate.Ulica}}*</label>
                                             <input type="text" class="form-control" name="street">
                                         </div>
                                     {% endif %}
@@ -101,15 +101,15 @@
                                     <!-- NUMBER -->
                                     {% if errors.2 == true %}
                                         <div class="form-group">
-                                            <label>Numer mieszkania*</label>
+                                            <label>{{translate.Numer_mieszkania}}*</label>
                                             <input type="text" class="form-control is-invalid" name="flat-number">
                                             <div class="invalid-feedback">
-                                                Pole Numer mieszkania nie może być puste
+                                                {{translate.Pole_Numer_mieszkania_nie_może_być_puste}}
                                             </div>
                                         </div>
                                     {% else %}
                                         <div class="form-group">
-                                            <label>Numer mieszkania*</label>
+                                            <label>{{translate.Numer_mieszkania}}*</label>
                                             <input type="text" class="form-control" name="flat-number">
                                         </div>
                                     {% endif %}
@@ -118,33 +118,33 @@
                                     {% if errors.4 == true %}
                                         <div class="custom-control custom-checkbox mr-sm-2">
                                             <input type="checkbox" class="custom-control-input" id="customControlAutosizing2" name="flat-checkbox" checked>
-                                            <label class="custom-control-label" for="customControlAutosizing2">Mieszkanie z pokojami na wynajem</label> <br>
-                                            <small>Zaznacz jeśli w danym mieszakniu wynajmujesz pokoje różnym najemcom.</small>
+                                            <label class="custom-control-label" for="customControlAutosizing2">{{translate.Mieszkanie_z_pokojami_na_wynajem}}</label> <br>
+                                            <small>{{translate.Zaznacz_jeśli_w_danym_mieszakniu_wynajmujesz_pokoje_różnym_najemcom}}</small>
                                         </div>
-                                
+                                        
                                         <div class="form-group m-t-15">
-                                            <label id="roomamount">Ilość pokoi</label>
+                                            <label id="roomamount">{{translate.Ilość_pokoi}}</label>
                                             <input type="number" class="form-control is-invalid" name="rooms" id="roomsinput" value="1" min="1" style="border-color: #e9ecef">
                                             <div class="invalid-feedback">
-                                                Podaj właściwą ilość pokoi
+                                                {{translate.Podaj_właściwą_ilość_pokoi}}
                                             </div>
                                         </div>
                                     {% else %}
                                         <div class="custom-control custom-checkbox mr-sm-2">
                                             <input type="checkbox" class="custom-control-input" id="customControlAutosizing2" name="flat-checkbox">
-                                            <label class="custom-control-label" for="customControlAutosizing2">Mieszkanie z pokojami na wynajem</label> <br>
-                                            <small>Zaznacz jeśli w danym mieszakniu wynajmujesz pokoje różnym najemcom.</small>
+                                            <label class="custom-control-label" for="customControlAutosizing2">{{translate.Mieszkanie_z_pokojami_na_wynajem}}</label> <br>
+                                            <small>{{translate.Zaznacz_jeśli_w_danym_mieszakniu_wynajmujesz_pokoje_różnym_najemcom}}</small>
                                         </div>
 
                                         <div class="form-group m-t-15">
-                                            <label id="roomamount">Ilość pokoi</label>
+                                            <label id="roomamount">{{translate.Ilość_pokoi}}</label>
                                             <input type="number" class="form-control" disabled name="rooms" id="roomsinput" value="" min="1">
                                         </div>
                                     {% endif %}
                                     
                                     <!-- ADDITIONAL INFO -->
                                      <div class="form-group m-t-15">
-                                        <label>Informacja dodatkowa</label>
+                                        <label>{{translate.Informacja_dodatkowa}}</label>
                                         <textarea class="form-control" rows=4 name="additional-info"></textarea>
                                     </div>
                             
@@ -153,8 +153,8 @@
 
                                 <div class="border-top">
                                     <div class="card-body">
-                                        <button type="submit" class="btn btn-info" name="addFlat-submit">Zapisz</button>
-                                        <a href="#" class="btn btn-secondary">Anuluj</a>
+                                        <button type="submit" class="btn btn-info" name="addFlat-submit">{{translate.Zapisz}}</button>
+                                        <a href="#" class="btn btn-secondary">{{translate.Anuluj}}</a>
 
                                     </div>
                                 </div>
@@ -200,12 +200,12 @@
 
             if ($('#customControlAutosizing2').is(':checked') == true){
                 $('#roomsinput').prop('disabled', false);
-                $('#roomamount').text('Ilość pokoi*');
+                $('#roomamount').text('{{translate.Ilość_pokoi}}*');
                 $('#roomsinput').val('1');
             } 
             else {
                 $('#roomsinput').prop('disabled', true);
-                $('#roomamount').text('Ilość pokoi');
+                $('#roomamount').text('{{translate.Ilość_pokoi}}');
                 $('#roomsinput').val(' ');
             }
 
