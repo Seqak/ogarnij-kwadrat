@@ -4,6 +4,8 @@ require('../vendor/autoload.php');
 require_once("language.php");
 require_once("includes/datasanitaze.php");
 require_once("includes/formvalidate.php");
+require_once("includes/flattype.php");
+require_once('../model/flattransaction.php');
 
 
 if (!isset($_SESSION['user_id'])) {
@@ -25,20 +27,42 @@ for ($i=0; $i <= 4 ; $i++) {
 if (isset($_POST['addFlat-submit'])) {
 
     $formValidate = new FormValidate();
-    $_POST = $formValidate->roomValidate($_POST);
+    $checkedData = $formValidate->roomValidate($_POST);
 
     $dataSanitaze = new DataSanitaze();
-    $sanitased = $dataSanitaze->sanitaze($_POST);
-
+    $sanitased = $dataSanitaze->sanitaze($checkedData);
     $errors = $formValidate->flatValidate($sanitased);
+    $isErro = $formValidate->isErro($errors);
 
+    if ($isErro == false) {
+
+        $queryType[0] = true;
+        $queryType[1] = $formValidate->isRoom($sanitased);
+        $queryType[2] = $formValidate->additionalInfo($sanitased);
+
+        $flatType = new FlatType();
+        $type = $flatType->type($queryType);
     
-  
-    
+        $flatTransaction = new FlatTransaction();
+
+        if ($type == 4) {
+            $flatTransaction->flatTransFour($sanitased);
+            header("Location: index.php");
+        }
+        elseif ($type == 3) {
+            $flatTransaction->flatTransThree($sanitased);
+            header("Location: index.php");
+        }
+        elseif ($type == 2) {
+            $flatTransaction->flatTransTwo($sanitased);
+            header("Location: index.php");
+        }
+        elseif ($type == 1) {
+            $flatTransaction->flatTransOne($sanitased);
+            header("Location: index.php");
+        }
+    }
 }
-
-
-
 
 $loader = new Twig_Loader_Filesystem('../views');
 $twig = new Twig_Environment($loader);
@@ -48,6 +72,5 @@ echo $twig->render('newflat.html', array(
     'errors' => $errors,
     
 ));
-
 
 ?>
