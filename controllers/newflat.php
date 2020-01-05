@@ -47,19 +47,19 @@ if (isset($_POST['addFlat-submit'])) {
 
         if ($type == 4) {
             $flatTransaction->flatTransFour($sanitased);
-            header("Location: index.php");
+            header("Location: flatlist.php");
         }
         elseif ($type == 3) {
             $flatTransaction->flatTransThree($sanitased);
-            header("Location: index.php");
+            header("Location: flatlist.php");
         }
         elseif ($type == 2) {
             $flatTransaction->flatTransTwo($sanitased);
-            header("Location: index.php");
+            header("Location: flatlist.php");
         }
         elseif ($type == 1) {
             $flatTransaction->flatTransOne($sanitased);
-            header("Location: index.php");
+            header("Location: flatlist.php");
         }
     }
 }
