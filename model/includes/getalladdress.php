@@ -8,7 +8,7 @@ class GetAllAddress extends DBconnect{
         $numRows = $query->rowCount();
 
         if ($numRows > 0) {
-            while ($row = $query->fetch()) {
+            while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
                 $data[] = $row;
             }
             return $data;

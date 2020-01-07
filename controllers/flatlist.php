@@ -28,6 +28,27 @@ $getAllAddresses = new GetAllAddress();
 $allAddresses = $getAllAddresses->getAddresses();
 // var_dump($allAddresses);
 
+// foreach ($allAddresses as $value) {
+//     echo $value['address_id'] . " | " . $value['city']  . " | " . $value['street'] . " | " . $value['number'] . "<br>";
+
+// }
+
+
+// foreach ($allFlats as $value) {
+
+//     echo $value['flat_id'] . " | " . $value['address_id']  . " | " . $value['info_id'] . "<br>";
+
+// }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -37,7 +58,6 @@ $twig = new Twig_Environment($loader);
 
 echo $twig->render('flatlist.html', array(
     'translate' =>  $translateArray ?? null,
-
 ));
 
 
