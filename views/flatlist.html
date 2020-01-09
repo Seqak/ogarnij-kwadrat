@@ -50,7 +50,68 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <a href="../controllers/newflat.php" class="btn btn-info">Dodaj mieszkanie</a>
+                                    
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <label><input type="search" class="form-control" placeholder="Szukaj"></label>
+                                    <a href="#" type="button" class="btn btn-info" style="margin-left: -4px; margin-top: -2px; height: 34.5px;"><i class="fas fa-search"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Show <select><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label>
+                                </div>
+
+                            </div>
+
+                            <div class="table-responsive">
+                                <table class="table" style="border: 1px solid #dee2e6;">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col"><b>ID Mieszkania</b></th>
+                                            <th scope="col"><b>Adres</b></th>
+                                            <th scope="col"><b>Numer mieszkania</b></th>
+                                            <th scope="col"><b>Ilość pokoi</b></th>
+                                            <th scope="col"><b>Wolne pokoje</b></th>
+                                            <th scope="col"><b></b></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="customtable">
+                                        {% for item in flats %}
+                                            
+                                        <tr>                                    
+                                            <input class="clientId" name="clientId" type="hidden" value="">
+                                            <td>{{ item.flat_id }} </td>
+                                            <td>{{ item.city }}, {{ item.street }} </td>
+                                            <td>{{ item.number }}</td>
+                                            <td>RoomAmount</td>
+                                            <td><span class="label label-danger">BRAK</span></td>
+                                            <td class="text-right">
+                                                <div class="btn-group">
+                                                    
+                                                    <a class="btn btn-dark btn-sm" href="mieszkania-zobacz.html"><i class="fas fa-eye"></i></a>
+
+                                                    <a class="btn btn-dark btn-sm" href="mieszkania-dodaj.html" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fas fa-pencil-alt"></i></a>
+
+                                                    <a href="#" class="cid btn btn-danger btn-sm checked" data-toggle="tooltip" data-placement="top" title="Usuń"><i class="fas fa-trash-alt"></i></a>
+                                                </div>
+                                            </td>    
+                                        </tr>      
+                                                                 
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                                
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -94,3 +155,5 @@
 </body>
 
 </html>
+
+Mam dwa array'e, które potrzebuję wyświetlić w jednym wierszu tabeli. 
