@@ -37,7 +37,9 @@ $inner = $getAllFlats->getRecord();
 
 
 
-
+// foreach ($inner as $value) {
+//     echo
+// }
 
 
 
