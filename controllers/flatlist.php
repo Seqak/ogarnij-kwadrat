@@ -34,6 +34,7 @@ $inner = $getAllFlats->getRecord();
 
 
 // echo "<pre>"; print_r($inner);  "</pre>";
+// dump($inner);
 
 
 
