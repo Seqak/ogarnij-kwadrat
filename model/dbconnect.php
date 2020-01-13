@@ -1,7 +1,5 @@
 <?php
 
-namespace Model\DBconnect;
-
 class DBconnect{
 
     private $dbHost;

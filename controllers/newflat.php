@@ -2,9 +2,9 @@
 session_start();
 require('../vendor/autoload.php');
 
-require_once("includes/datasanitaze.php");
-require_once("includes/formvalidate.php");
-require_once("includes/flattype.php");
+use Controllers\Includes\DataSanitaze as DataSanitaze;
+use Controllers\Includes\FormValidate as FormValidate;
+use Controllers\Includes\FlatType as FlatType;
 require_once('../model/flattransaction.php');
 
 
@@ -26,10 +26,10 @@ for ($i=0; $i <= 4 ; $i++) {
 
 if (isset($_POST['addFlat-submit'])) {
 
-    $formValidate = new FormValidate();
+    $formValidate = new FormValidate\FormValidate();
     $checkedData = $formValidate->roomValidate($_POST);
 
-    $dataSanitaze = new DataSanitaze();
+    $dataSanitaze = new DataSanitaze\DataSanitaze();
     $sanitased = $dataSanitaze->sanitaze($checkedData);
     $errors = $formValidate->flatValidate($sanitased);
     $isErro = $formValidate->isErro($errors);
@@ -40,7 +40,7 @@ if (isset($_POST['addFlat-submit'])) {
         $queryType[1] = $formValidate->isRoom($sanitased);
         $queryType[2] = $formValidate->additionalInfo($sanitased);
 
-        $flatType = new FlatType();
+        $flatType = new FlatType\FlatType();
         $type = $flatType->type($queryType);
     
         $flatTransaction = new FlatTransaction();

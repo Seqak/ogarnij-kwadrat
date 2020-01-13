@@ -7,22 +7,11 @@
   
     "autoload": {
         "classmap": [
-            "controllers",
-            "controllers/includes",
-            "model",
-            "model/includes"
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
         "controllers",
         "controllers/includes",
-        "model"
-        
->>>>>>> Test.
-=======
->>>>>>> parent of 966caaa... Test.
-=======
->>>>>>> feature
+        "model",
+        "model/includes",
+        "model/includes/flatrecords.php"
 
         ]
     }

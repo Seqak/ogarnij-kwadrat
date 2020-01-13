@@ -1,5 +1,7 @@
 <?php
 
+namespace Controllers\Includes\DataSanitaze;
+
 class DataSanitaze{
 
 

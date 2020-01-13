@@ -2,7 +2,6 @@
 session_start();
 require('../vendor/autoload.php');
 require('../model/dbconnect.php');
-
 require_once('../model/user.php');
 
 if (!isset($_SESSION['user_id'])) {

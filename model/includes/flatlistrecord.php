@@ -26,9 +26,6 @@ class flatListRecord{
     }
 
 
-
-
-
     public function getFlatId(){
 
     }
@@ -44,12 +41,5 @@ class flatListRecord{
     public function getRooms(){
 
     }
-
-
-
-
-
-
-
 
 }

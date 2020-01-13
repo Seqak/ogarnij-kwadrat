@@ -1,5 +1,7 @@
 <?php
 
+namespace Controllers\Includes\FlatType;
+
 class FlatType{
 
     public function type($data){

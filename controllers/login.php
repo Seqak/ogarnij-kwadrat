@@ -1,12 +1,10 @@
 <?php
 session_start();
-use Model\DBconnect;
-
 require('../vendor/autoload.php');
 
-require_once("includes/datasanitaze.php");
-// require('../model/dbconnect.php');
-
+use Controllers\Includes\DataSanitaze as DataSanitaze;
+require('../model/dbconnect.php');
+require_once('../model/user.php');
 require_once('../model/includes/authorize.php');
 
 
@@ -22,7 +20,7 @@ $translateArray = $lang->checkLanguage();
 // Validate system with more OOP v3.
 if (isset($_POST['login-btn'])) {
 
-    $dataSanitaze = new DataSanitaze();
+    $dataSanitaze = new DataSanitaze\DataSanitaze();
     $sanitased = $dataSanitaze->sanitaze($_POST);
 
     $email = $sanitased[0];
@@ -39,7 +37,7 @@ if (isset($_POST['login-btn'])) {
 
             if (password_verify($password, $passwordHash['user_password'])) {
                
-                $user = new Model\User\User();
+                $user = new User();
                 $user->setUserId($email);
                 $userId = $user->getUserId();
 

@@ -18,6 +18,7 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <link href="../assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -81,7 +82,6 @@
                                 <table class="table" style="border: 1px solid #dee2e6;">
                                     <thead class="thead-light">
                                         <tr>
-                                            <th scope="col"><b>ID Mieszkania</b></th>
                                             <th scope="col"><b>Adres</b></th>
                                             <th scope="col"><b>Numer mieszkania</b></th>
                                             <th scope="col"><b>Ilość pokoi</b></th>
@@ -93,8 +93,7 @@
                                         {% for item in flatz %}
                                             
                                         <tr>                                    
-                                            <input class="clientId" name="clientId" type="hidden" value="">
-                                            <td>{{ item.flatId }} </td>
+                                            <input class="clientId" name="clientId" type="hidden" value="item.flatId">
                                             <td>{{ item.city }}, {{ item.street }} </td>
                                             <td>{{ item.number }}</td>
                                             <td>
@@ -120,7 +119,7 @@
 
                                                     <a class="btn btn-dark btn-sm" href="#" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fas fa-pencil-alt"></i></a>
 
-                                                    <a href="#" class="cid btn btn-danger btn-sm checked" data-toggle="tooltip" data-placement="top" title="Usuń" onClick='removeRow("{{ client.id }}")'><i class="fas fa-trash-alt"></i></a>
+                                                    <a href="#" class="cid btn btn-danger btn-sm checked" data-toggle="tooltip" data-placement="top" title="Usuń" onClick='removeRow("{{ item.flatId }}")'><i class="fas fa-trash-alt"></i></a>
                                                 </div>
                                             </td>    
                                         </tr>      
@@ -168,6 +167,8 @@
     <!--Custom JavaScript -->
     <script src="../dist/js/custom.min.js"></script>
     <script src="../assets/extra-libs/DataTables/datatables.min.js"></script>
+
+    <script src="../assets/libs/toastr/build/toastr.min.js"></script>
     <script>
         $('#zero_config').DataTable();
 
@@ -193,6 +194,18 @@
                     });
             };
     </script>
+
+    
+    <!-- {% if flatAdded == 1 %}
+        <script>
+            toastr.success('Mieszkanie zostało pomyślnie dodany do bazy danych.', { timeOut: 1500, showDuration: 700,});
+        </script>
+    {% elseif flatAdded == 0 %}
+        <script>
+            toastr.error('Nie udało się dodać mieszkania do bazy danych. Coś poszło nie tak.', { timeOut: 2500, showDuration: 700,});      
+        </script>
+    {% endif %} -->
+    
 </body>
 
 </html>

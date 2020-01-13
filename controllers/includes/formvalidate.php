@@ -1,5 +1,7 @@
 <?php
 
+namespace Controllers\Includes\FormValidate;
+
 class FormValidate{
 
     //Method that services situation when someone try crash checkbox or room's input.
