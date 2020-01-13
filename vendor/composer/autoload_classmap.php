@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Change\\Language\\Language' => $baseDir . '/controllers/language.php',
     'Symfony\\Polyfill\\Ctype\\Ctype' => $vendorDir . '/symfony/polyfill-ctype/Ctype.php',
     'Symfony\\Polyfill\\Mbstring\\Mbstring' => $vendorDir . '/symfony/polyfill-mbstring/Mbstring.php',
     'Twig\\Cache\\CacheInterface' => $vendorDir . '/twig/twig/src/Cache/CacheInterface.php',
@@ -363,5 +364,4 @@ return array(
     'Twig_TokenStream' => $vendorDir . '/twig/twig/lib/Twig/TokenStream.php',
     'Twig_Util_DeprecationCollector' => $vendorDir . '/twig/twig/lib/Twig/Util/DeprecationCollector.php',
     'Twig_Util_TemplateDirIterator' => $vendorDir . '/twig/twig/lib/Twig/Util/TemplateDirIterator.php',
-    'controllers\\testDupa\\testDupa' => $baseDir . '/controllers/testDupa.php',
 );

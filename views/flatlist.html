@@ -36,7 +36,7 @@
         <!-- Include header -->
         {% include 'includes/header.html' %}
         <!-- Include sidemenu -->
-        {% include 'includes/sidemenu.html' %}
+        <!-- {% include 'includes/sidemenu.html' %} -->
 
         <div class="page-wrapper">
             <!-- Start Page Content -->
@@ -90,23 +90,23 @@
                                         </tr>
                                     </thead>
                                     <tbody class="customtable">
-                                        {% for item in flats %}
+                                        {% for item in flatz %}
                                             
                                         <tr>                                    
                                             <input class="clientId" name="clientId" type="hidden" value="">
-                                            <td>{{ item.0 }} </td>
-                                            <td>{{ item.1 }}, {{ item.2 }} </td>
-                                            <td>{{ item.3 }}</td>
+                                            <td>{{ item.flatId }} </td>
+                                            <td>{{ item.city }}, {{ item.street }} </td>
+                                            <td>{{ item.number }}</td>
                                             <td>
-                                                {% if item.4 > 0 %}
-                                                    {{ item.4 }}
+                                                {% if item.rooms > 0 %}
+                                                    {{ item.rooms }}
                                                 {% else %}
                                                     -
                                                 {% endif %}
                                             </td>
                                             <td>
 
-                                                {% if item.4 > 0 %}
+                                                {% if item.rooms > 0 %}
                                                     <span class="label label-success">1</span>
                                                 {% else %}
                                                     <span class="label label-danger">BRAK</span>

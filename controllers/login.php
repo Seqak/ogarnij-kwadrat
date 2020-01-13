@@ -14,7 +14,7 @@ if( isset($_GET['lang'])){
     $_SESSION['language'] = $_GET['lang'];
 }
 
-$lang = new Language();
+$lang = new App\Change\Language\Language();
 $translateArray = $lang->checkLanguage();
 
 // Validate system with more OOP v3.

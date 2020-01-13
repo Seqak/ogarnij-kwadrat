@@ -12,10 +12,6 @@ class ComposerStaticInitbd746f987b0bf4da21e685fe7719a940
     );
 
     public static $prefixLengthsPsr4 = array (
-        'c' => 
-        array (
-            'controllers\\' => 12,
-        ),
         'T' => 
         array (
             'Twig\\' => 5,
@@ -28,10 +24,6 @@ class ComposerStaticInitbd746f987b0bf4da21e685fe7719a940
     );
 
     public static $prefixDirsPsr4 = array (
-        'controllers\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/controllers',
-        ),
         'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
@@ -57,6 +49,7 @@ class ComposerStaticInitbd746f987b0bf4da21e685fe7719a940
     );
 
     public static $classMap = array (
+        'App\\Change\\Language\\Language' => __DIR__ . '/../..' . '/controllers/language.php',
         'Symfony\\Polyfill\\Ctype\\Ctype' => __DIR__ . '/..' . '/symfony/polyfill-ctype/Ctype.php',
         'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
         'Twig\\Cache\\CacheInterface' => __DIR__ . '/..' . '/twig/twig/src/Cache/CacheInterface.php',
@@ -414,7 +407,6 @@ class ComposerStaticInitbd746f987b0bf4da21e685fe7719a940
         'Twig_TokenStream' => __DIR__ . '/..' . '/twig/twig/lib/Twig/TokenStream.php',
         'Twig_Util_DeprecationCollector' => __DIR__ . '/..' . '/twig/twig/lib/Twig/Util/DeprecationCollector.php',
         'Twig_Util_TemplateDirIterator' => __DIR__ . '/..' . '/twig/twig/lib/Twig/Util/TemplateDirIterator.php',
-        'controllers\\testDupa\\testDupa' => __DIR__ . '/../..' . '/controllers/testDupa.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

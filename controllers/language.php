@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Change\Language;
+
 class Language{
 
     public function checkLanguage(){
