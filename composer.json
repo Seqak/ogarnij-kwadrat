@@ -7,17 +7,10 @@
   
     "autoload": {
         "classmap": [
-<<<<<<< refs/remotes/origin/feature
             "controllers",
             "controllers/includes",
             "model",
             "model/includes"
-=======
-        "controllers",
-        "controllers/includes",
-        "model"
-        
->>>>>>> Test.
 
         ]
     }
