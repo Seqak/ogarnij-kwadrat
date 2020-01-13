@@ -1,4 +1,6 @@
 {
+    "name": "Test",
+    "description": "test",
     "require": {
         "twig/twig": "^2.0"
     },
@@ -10,6 +12,7 @@
             "model",
             "model/includes"
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         "controllers",
         "controllers/includes",
@@ -18,6 +21,8 @@
 >>>>>>> Test.
 =======
 >>>>>>> parent of 966caaa... Test.
+=======
+>>>>>>> feature
 
         ]
     }
