@@ -5,17 +5,19 @@
   
     "autoload": {
         "classmap": [
-<<<<<<< refs/remotes/origin/feature
             "controllers",
             "controllers/includes",
             "model",
             "model/includes"
+<<<<<<< HEAD
 =======
         "controllers",
         "controllers/includes",
         "model"
         
 >>>>>>> Test.
+=======
+>>>>>>> parent of 966caaa... Test.
 
         ]
     }
