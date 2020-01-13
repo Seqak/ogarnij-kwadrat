@@ -1,10 +1,12 @@
 <?php
 session_start();
+use Model\DBconnect;
+
 require('../vendor/autoload.php');
-require_once("language.php");
+
 require_once("includes/datasanitaze.php");
-require('../model/dbconnect.php');
-require_once('../model/user.php');
+// require('../model/dbconnect.php');
+
 require_once('../model/includes/authorize.php');
 
 
@@ -37,7 +39,7 @@ if (isset($_POST['login-btn'])) {
 
             if (password_verify($password, $passwordHash['user_password'])) {
                
-                $user = new User();
+                $user = new Model\User\User();
                 $user->setUserId($email);
                 $userId = $user->getUserId();
 

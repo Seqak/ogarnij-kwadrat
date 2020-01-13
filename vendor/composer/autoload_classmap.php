@@ -7,6 +7,18 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Change\\Language\\Language' => $baseDir . '/controllers/language.php',
+    'Authorize' => $baseDir . '/model/includes/authorize.php',
+    'DataSanitaze' => $baseDir . '/controllers/includes/datasanitaze.php',
+    'Flat' => $baseDir . '/model/flat.php',
+    'FlatTransaction' => $baseDir . '/model/flattransaction.php',
+    'FlatType' => $baseDir . '/controllers/includes/flattype.php',
+    'FlatsAddress' => $baseDir . '/model/flatsaddress.php',
+    'FormValidate' => $baseDir . '/controllers/includes/formvalidate.php',
+    'GetAllAddress' => $baseDir . '/model/includes/getalladdress.php',
+    'GetAllFlats' => $baseDir . '/model/includes/getallflats.php',
+    'GetUsers' => $baseDir . '/model/getusers.php',
+    'Model\\DBconnect\\DBconnect' => $baseDir . '/model/dbconnect.php',
+    'Model\\User\\User' => $baseDir . '/model/user.php',
     'Symfony\\Polyfill\\Ctype\\Ctype' => $vendorDir . '/symfony/polyfill-ctype/Ctype.php',
     'Symfony\\Polyfill\\Mbstring\\Mbstring' => $vendorDir . '/symfony/polyfill-mbstring/Mbstring.php',
     'Twig\\Cache\\CacheInterface' => $vendorDir . '/twig/twig/src/Cache/CacheInterface.php',
@@ -364,4 +376,5 @@ return array(
     'Twig_TokenStream' => $vendorDir . '/twig/twig/lib/Twig/TokenStream.php',
     'Twig_Util_DeprecationCollector' => $vendorDir . '/twig/twig/lib/Twig/Util/DeprecationCollector.php',
     'Twig_Util_TemplateDirIterator' => $vendorDir . '/twig/twig/lib/Twig/Util/TemplateDirIterator.php',
+    'flatListRecord' => $baseDir . '/model/includes/flatlistrecord.php',
 );

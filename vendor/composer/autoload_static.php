@@ -50,6 +50,18 @@ class ComposerStaticInitbd746f987b0bf4da21e685fe7719a940
 
     public static $classMap = array (
         'App\\Change\\Language\\Language' => __DIR__ . '/../..' . '/controllers/language.php',
+        'Authorize' => __DIR__ . '/../..' . '/model/includes/authorize.php',
+        'DataSanitaze' => __DIR__ . '/../..' . '/controllers/includes/datasanitaze.php',
+        'Flat' => __DIR__ . '/../..' . '/model/flat.php',
+        'FlatTransaction' => __DIR__ . '/../..' . '/model/flattransaction.php',
+        'FlatType' => __DIR__ . '/../..' . '/controllers/includes/flattype.php',
+        'FlatsAddress' => __DIR__ . '/../..' . '/model/flatsaddress.php',
+        'FormValidate' => __DIR__ . '/../..' . '/controllers/includes/formvalidate.php',
+        'GetAllAddress' => __DIR__ . '/../..' . '/model/includes/getalladdress.php',
+        'GetAllFlats' => __DIR__ . '/../..' . '/model/includes/getallflats.php',
+        'GetUsers' => __DIR__ . '/../..' . '/model/getusers.php',
+        'Model\\DBconnect\\DBconnect' => __DIR__ . '/../..' . '/model/dbconnect.php',
+        'Model\\User\\User' => __DIR__ . '/../..' . '/model/user.php',
         'Symfony\\Polyfill\\Ctype\\Ctype' => __DIR__ . '/..' . '/symfony/polyfill-ctype/Ctype.php',
         'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
         'Twig\\Cache\\CacheInterface' => __DIR__ . '/..' . '/twig/twig/src/Cache/CacheInterface.php',
@@ -407,6 +419,7 @@ class ComposerStaticInitbd746f987b0bf4da21e685fe7719a940
         'Twig_TokenStream' => __DIR__ . '/..' . '/twig/twig/lib/Twig/TokenStream.php',
         'Twig_Util_DeprecationCollector' => __DIR__ . '/..' . '/twig/twig/lib/Twig/Util/DeprecationCollector.php',
         'Twig_Util_TemplateDirIterator' => __DIR__ . '/..' . '/twig/twig/lib/Twig/Util/TemplateDirIterator.php',
+        'flatListRecord' => __DIR__ . '/../..' . '/model/includes/flatlistrecord.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

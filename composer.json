@@ -5,7 +5,10 @@
   
     "autoload": {
         "classmap": [
-        "controllers/language.php"
+            "controllers",
+            "controllers/includes",
+            "model",
+            "model/includes"
 
         ]
     }

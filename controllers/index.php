@@ -2,7 +2,7 @@
 session_start();
 require('../vendor/autoload.php');
 require('../model/dbconnect.php');
-require_once("language.php");
+
 require_once('../model/user.php');
 
 if (!isset($_SESSION['user_id'])) {
@@ -14,7 +14,7 @@ if( isset($_GET['lang'])){
     $_SESSION['language'] = $_GET['lang'];
 }
 
-$lang = new Language();
+$lang = new App\Change\Language\Language();
 $translateArray = $lang->checkLanguage();
 
 $user_id = $_SESSION['user_id'];

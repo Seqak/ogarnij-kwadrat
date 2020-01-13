@@ -1,6 +1,8 @@
 <?php
+use Model\DBconnect;
+namespace Model\User;
 
-class User extends DBconnect{
+class User{
     
     private $userId;
     private $userName;

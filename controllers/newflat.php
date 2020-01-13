@@ -1,7 +1,7 @@
 <?php
 session_start();
 require('../vendor/autoload.php');
-require_once("language.php");
+
 require_once("includes/datasanitaze.php");
 require_once("includes/formvalidate.php");
 require_once("includes/flattype.php");
@@ -17,7 +17,7 @@ if( isset($_GET['lang'])){
     $_SESSION['language'] = $_GET['lang'];
 }
 
-$lang = new Language();
+$lang = new App\Change\Language\Language();
 $translateArray = $lang->checkLanguage();
 
 for ($i=0; $i <= 4 ; $i++) { 
