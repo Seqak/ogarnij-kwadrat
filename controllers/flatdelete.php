@@ -2,7 +2,6 @@
 session_start();
 require_once("../model/flatdel.php");
 
-
 $flatId = $_GET['flatId'];
 
 $ids = explode(" ", $flatId);

@@ -38,5 +38,4 @@ class FlatDelete extends DBconnect{
             throw $e;
         }
     }
-
 }
