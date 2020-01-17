@@ -18,6 +18,7 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
     <link href="../assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -37,7 +38,7 @@
         <!-- Include header -->
         {% include 'includes/header.html' %}
         <!-- Include sidemenu -->
-        <!-- {% include 'includes/sidemenu.html' %} -->
+        {% include 'includes/sidemenu.html' %}
 
         <div class="page-wrapper">
             <!-- Start Page Content -->
@@ -119,11 +120,11 @@
 
                                                     <a class="btn btn-dark btn-sm" href="#" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fas fa-pencil-alt"></i></a>
 
-                                                    <a href="#" class="cid btn btn-danger btn-sm checked" data-toggle="tooltip" data-placement="top" title="Usuń" onClick='removeRow("{{ item.flatId }}")'><i class="fas fa-trash-alt"></i></a>
+                                                    <button type="button" class="cid btn btn-danger btn-sm checked" onClick='removeRow("{{ item.flatId }} {{ item.addressId }} {{ item.infoId }}")'><i class="fas fa-trash-alt"></i></button>
                                                 </div>
                                             </td>    
                                         </tr>      
-                                                                 
+                                        
                                         {% endfor %}
                                     </tbody>
                                 </table>
@@ -172,8 +173,9 @@
     <script>
         $('#zero_config').DataTable();
 
-        function removeRow(id){
-            console.log(id);
+
+            function removeRow(flatId, addressId, infoId){
+            console.log(flatId, addressId, infoId);
                 swal({
                     title: "Usunąć to mieszkanie?",
                     text: "Wybrane mieszkanie zostanie całkowicie usunięte z bazy danych.",
@@ -183,8 +185,10 @@
                     })
                     .then((willDelete) => {
                         if (willDelete) {
-                            $.post("tables.php", {
-                                id: id
+                            $.get("flatdelete.php", {
+                                flatId: flatId,
+                                addressId: addressId,
+                                infoId: infoId
                             }, function(){
                                 location.reload();
                             });
@@ -196,15 +200,11 @@
     </script>
 
     
-    <!-- {% if flatAdded == 1 %}
+    {% if flatAdded == 1 %}
         <script>
-            toastr.success('Mieszkanie zostało pomyślnie dodany do bazy danych.', { timeOut: 1500, showDuration: 700,});
+            toastr.success('Mieszkanie zostało pomyślnie dodane do bazy danych.', { timeOut: 1500, showDuration: 700, opacity: 1});
         </script>
-    {% elseif flatAdded == 0 %}
-        <script>
-            toastr.error('Nie udało się dodać mieszkania do bazy danych. Coś poszło nie tak.', { timeOut: 2500, showDuration: 700,});      
-        </script>
-    {% endif %} -->
+    {% endif %}
     
 </body>
 

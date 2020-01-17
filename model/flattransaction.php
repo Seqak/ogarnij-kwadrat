@@ -11,11 +11,8 @@ class FlatTransaction extends DBconnect{
         try {
             
             $stmtAddress = $pdo->prepare("INSERT INTO flats_address VALUES (NULL, :city, :street, :number)");
-
             $stmtInfo = $pdo->prepare("INSERT INTO flats_additional_info VALUES (NULL, :content)");
-
             $stmtFlat = $pdo->prepare("INSERT INTO flats VALUES (NULL, :addresId, :infoId)");
-
             $stmtRooms = $pdo->prepare("INSERT INTO rooms VALUES (NULL, :number, :flatId)");
 
             $pdo->beginTransaction();

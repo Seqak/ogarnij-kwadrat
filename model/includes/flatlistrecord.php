@@ -3,6 +3,8 @@
 class flatListRecord{
 
     public $flatId;
+    public $addressId;
+    public $infoId;
     public $city;
     public $street;
     public $number;
@@ -11,6 +13,12 @@ class flatListRecord{
 
     public function setFlatId($arg){
         $this->flatId = $arg;
+    }
+    public function setAddressId($arg){
+        $this->addressId = $arg;
+    }
+    public function setInfoId($arg){
+        $this->infoId = $arg;
     }
     public function setCity($arg){
         $this->city = $arg;
@@ -23,23 +31,6 @@ class flatListRecord{
     }
     public function setRooms($arg){
         $this->rooms = $arg;
-    }
-
-
-    public function getFlatId(){
-
-    }
-    public function getCity(){
-        
-    }
-    public function getStreet(){
-        
-    }
-    public function getNumber(){
-        
-    }
-    public function getRooms(){
-
     }
 
 }
