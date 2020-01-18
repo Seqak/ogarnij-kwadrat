@@ -118,7 +118,7 @@
                                                     
                                                     <a class="btn btn-dark btn-sm" href="#"><i class="fas fa-eye"></i></a>
 
-                                                    <a class="btn btn-dark btn-sm" href="#" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fas fa-pencil-alt"></i></a>
+                                                    <a class="btn btn-dark btn-sm" href="../controllers/flatedit.php?flatId={{item.flatId}}&address={{item.addressId}}&infoId={{item.infoId}}" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fas fa-pencil-alt"></i></a>
 
                                                     <button type="button" class="cid btn btn-danger btn-sm checked" onClick='removeRow("{{ item.flatId }} {{ item.addressId }} {{ item.infoId }}")'><i class="fas fa-trash-alt"></i></button>
                                                 </div>
@@ -148,6 +148,8 @@
         <!-- footer -->
         {% include 'includes/footer.html' %}
         <!-- End footer -->
+
+        flatIdaddressIdinfoId
 
     </div>
 

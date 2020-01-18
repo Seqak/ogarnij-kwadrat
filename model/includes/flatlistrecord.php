@@ -9,7 +9,7 @@ class flatListRecord{
     public $street;
     public $number;
     public $rooms;
-
+    public $addInfo;
 
     public function setFlatId($arg){
         $this->flatId = $arg;
@@ -32,5 +32,7 @@ class flatListRecord{
     public function setRooms($arg){
         $this->rooms = $arg;
     }
-
+    public function setAddInfo($arg){
+        $this->addInfo = $arg;
+    }
 }
