@@ -3,11 +3,13 @@ session_start();
 require('../vendor/autoload.php');
 require('../model/dbconnect.php');
 require_once('../model/includes/flatrecords.php');
+require_once('../model/editflattransaction.php');
 use Controllers\Includes\DataSanitaze as DataSanitaze;
 use Controllers\Includes\FormValidate as FormValidate;
 use Controllers\Includes\FlatType as FlatType;
 // require_once('../model/flattransaction.php');
 require_once('../model/includes/flatlistrecord.php');
+
 
 
 if (!isset($_SESSION['user_id'])) {
@@ -29,6 +31,12 @@ if (isset($_GET['flatId'])) {
     if ($_GET['infoId'] == null) {
         $infoId = 0;
     }
+    else{
+        $infoId = $_GET['infoId'];
+    }
+
+    $_SESSION['info_id'] = $infoId;
+    $_SESSION['address_id'] = $_GET['address'];
 }
 
 for ($i=0; $i <= 4 ; $i++) { 
@@ -71,18 +79,38 @@ if (isset($_POST['editFlat-submit'])) {
 
     if ($flatsObjArray->rooms > 0) {
         $roomsIds = $getFlatRecords->getRoomsAmount($_SESSION['editflat_id']);
-        echo "<pre>"; print_r($roomsIds); echo "</pre>";
     }
     else{
-        $roomsIds = 0;
+        $roomsIds = array(0) ;
     }
 
-    // echo "<pre>"; print_r($type); echo "</pre>";
+    // echo "<pre>"; print_r($roomsIds); echo "</pre>";
+    $editTransactions = new editflattransaction(); 
+
+    if ($type == 4) {
+        // 1. Usuwamy pokoje 2. Usuwamy dodatkowe info. 3. Update adresu.
+        $editTransactions->editFlatTransFour($sanitased, $roomsIds, $_SESSION['info_id'], $_SESSION['editflat_id'], $_SESSION['address_id']);
+        header("Location: flatlist.php");
+    }
+    elseif ($type == 3) {
+
+        $txt = $sanitased[3];
+        $editTransactions->editFlatTransThree($sanitased, $roomsIds, $_SESSION['info_id'], $_SESSION['editflat_id'], $_SESSION['address_id']);
+        header("Location: flatlist.php");
+       
+    }
+    elseif ($type == 2) {
+        
+    }
+    elseif ($type == 1) {
+        
+    }
+
+    // echo "<pre>"; print_r($sanitased); echo "</pre>";
     
     
 }
 
-$aaa = array("Kacper", "Piotr", "Ania", "Zuzia", "Maria", "Gienek");
 
 $loader = new Twig_Loader_Filesystem('../views');
 $twig = new Twig_Environment($loader);
@@ -92,7 +120,6 @@ echo $twig->render('editflat.html', array(
     'flat' => $flatsObjArray,
     'errors' => $errors,
     'update' => $_SESSION['editflat_id'] ?? null,
-    'sort' => $aaa,
 ));
 
 
