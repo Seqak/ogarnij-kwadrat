@@ -84,9 +84,9 @@
                                     <thead class="thead-light">
                                         <tr>
                                             <th scope="col"><b>Adres</b></th>
-                                            <th scope="col"><b>Numer mieszkania</b></th>
-                                            <th scope="col"><b>Ilość pokoi</b></th>
-                                            <th scope="col"><b>Wolne pokoje</b></th>
+                                            <th scope="col" class="text-center"><b>Numer mieszkania</b></th>
+                                            <th scope="col" class="text-center"><b>Ilość pokoi</b></th>
+                                            <!-- <th scope="col"><b>Wolne pokoje</b></th> -->
                                             <th scope="col"><b></b></th>
                                         </tr>
                                     </thead>
@@ -96,23 +96,23 @@
                                         <tr>                                    
                                             <input class="clientId" name="clientId" type="hidden" value="item.flatId">
                                             <td>{{ item.city }}, {{ item.street }} </td>
-                                            <td>{{ item.number }}</td>
-                                            <td>
+                                            <td class="text-center">{{ item.number }}</td>
+                                            <td class="text-center">
                                                 {% if item.rooms > 0 %}
-                                                    {{ item.rooms }}
+                                                <span class="label label-info"><b>{{ item.rooms }}</b></span>
                                                 {% else %}
-                                                    -
+                                                <span class="label label-success"> <b>M</b> </span>
                                                 {% endif %}
                                             </td>
-                                            <td>
+                                            <!-- <td>
 
                                                 {% if item.rooms > 0 %}
                                                     <span class="label label-success">1</span>
                                                 {% else %}
-                                                    <span class="label label-danger">BRAK</span>
+                                                    <span class="label label-info">Mieszkanie</span>
                                                 {% endif %}
                                                 
-                                            </td>
+                                            </td> -->
                                             <td class="text-right">
                                                 <div class="btn-group">
                                                     
@@ -128,15 +128,12 @@
                                         {% endfor %}
                                     </tbody>
                                 </table>
-                                
+                            
                             </div>
 
                         </div>
                     </div>
                 </div>
-
-
-
 
                 </div>
             </div>

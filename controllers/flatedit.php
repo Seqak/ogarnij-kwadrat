@@ -24,6 +24,7 @@ $translateArray = $lang->checkLanguage();
 
 if (isset($_GET['flatId'])) {
     $flatId = $_GET['flatId'];
+    $_SESSION['editflat_id'] = $flatId;
 
     if ($_GET['infoId'] == null) {
         $infoId = 0;
@@ -35,7 +36,7 @@ for ($i=0; $i <= 4 ; $i++) {
 }
 
 $getFlatRecords = new GetFlatRecords();
-$flatRecord = $getFlatRecords->getOneRecord($flatId);
+$flatRecord = $getFlatRecords->getOneRecord($_SESSION['editflat_id']);
 // echo "<pre>"; print_r($flatRecord); echo "</pre>";
 
 $flatsObjArray = new flatListRecord();
@@ -51,17 +52,37 @@ $flatsObjArray->setAddInfo($flatRecord['content']);
 
 // echo "<pre>"; print_r($flatsObjArray); echo "</pre>";
 
-// if (isset($_POST['editFlat-submit'])) {
+if (isset($_POST['editFlat-submit'])) {
 
-//     $formValidate = new FormValidate\FormValidate();
-//     $checkedData = $formValidate->roomValidate($_POST);
+    $formValidate = new FormValidate\FormValidate();
+    $checkedData = $formValidate->roomValidate($_POST);
 
-//     $dataSanitaze = new DataSanitaze\DataSanitaze();
-//     $sanitased = $dataSanitaze->sanitaze($checkedData);
-//     $errors = $formValidate->flatValidate($sanitased);
-//     $isErro = $formValidate->isErro($errors);
+    $dataSanitaze = new DataSanitaze\DataSanitaze();
+    $sanitased = $dataSanitaze->sanitaze($checkedData);
+    $errors = $formValidate->flatValidate($sanitased);
+    $isErro = $formValidate->isErro($errors);
 
-// }
+    $queryType[0] = true;
+    $queryType[1] = $formValidate->isRoom($sanitased);
+    $queryType[2] = $formValidate->additionalInfo($sanitased);
+
+    $flatType = new FlatType\FlatType();
+    $type = $flatType->type($queryType);
+
+    if ($flatsObjArray->rooms > 0) {
+        $roomsIds = $getFlatRecords->getRoomsAmount($_SESSION['editflat_id']);
+        echo "<pre>"; print_r($roomsIds); echo "</pre>";
+    }
+    else{
+        $roomsIds = 0;
+    }
+
+    // echo "<pre>"; print_r($type); echo "</pre>";
+    
+    
+}
+
+$aaa = array("Kacper", "Piotr", "Ania", "Zuzia", "Maria", "Gienek");
 
 $loader = new Twig_Loader_Filesystem('../views');
 $twig = new Twig_Environment($loader);
@@ -70,15 +91,30 @@ echo $twig->render('editflat.html', array(
     'translate' =>  $translateArray ?? null,
     'flat' => $flatsObjArray,
     'errors' => $errors,
-    
+    'update' => $_SESSION['editflat_id'] ?? null,
+    'sort' => $aaa,
 ));
 
+
+/*
+*
+*           EDYTOWANIE REKORDÓW
+*
+*   Pkt 7. 
+*
+*
+*
+*
+*
+*
+*
+*/
+
+
+
+
+
+
 ?>
 
 
-
-
-
-
-
-?>
