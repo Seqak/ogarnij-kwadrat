@@ -4,7 +4,6 @@ namespace Controllers\Includes\DataSanitaze;
 
 class DataSanitaze{
 
-
     public function sanitazeOne($data){
         $data = htmlspecialchars($data);
         return $data;
@@ -19,7 +18,5 @@ class DataSanitaze{
         return $sanitazed;
     }
 }
-
-
 
 ?>

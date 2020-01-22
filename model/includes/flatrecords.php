@@ -34,16 +34,13 @@ class GetFlatRecords extends DBconnect{
     public function getRoomsAmount($flatId){
 
         $query = $this->connect()->query("SELECT room_id FROM rooms WHERE flat_id = '$flatId'");
-        
         $numRows = $query->rowCount();
-
         
         while ($row = $query->fetch(PDO::FETCH_NUM)) {
             $data[] = $row;
         }
 
-        for ($i=0; $i <= count($data)-1 ; $i++) { 
-            
+        for ($i=0; $i <= count($data)-1 ; $i++) {            
             $roomsIds[] = $data[$i][0];
         }
 

@@ -17,7 +17,5 @@ class FlatType{
         elseif ($data[0] == true) {
             return 4;
         }
-
-
     }
 }

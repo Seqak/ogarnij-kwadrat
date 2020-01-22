@@ -35,7 +35,7 @@
 
         {% include 'includes/header.html' %}
   
-        <!-- {% include 'includes/sidemenu.html' %} -->
+        {% include 'includes/sidemenu.html' %}
 
         <div class="page-wrapper">
 
@@ -58,13 +58,6 @@
 
                             <div class="card">
                                 <div class="card-body">
-                                
-<!-- 
-                                    {% if errors.0 == true %}
-                                    
-                                    {% else %}
-
-                                    {% endif %} -->
 
                                     <!-- CITY -->
                                     {% if errors.0 == true %}
@@ -173,10 +166,7 @@
                                 </div>
 
                             </div>
-                        </form>
-
-                        {{ update }} 
-
+                        </form> 
                     </div>
                 </div>
             </div>
@@ -186,7 +176,6 @@
             {% include 'includes/footer.html' %}
     
         </div>
-
     </div>
 
     <!-- All Jquery -->
@@ -209,7 +198,6 @@
     <!--Custom JavaScript -->
     <script src="../dist/js/custom.min.js"></script>
    
-
     <script>
 
         $('#customControlAutosizing2').change(function(){
@@ -227,12 +215,9 @@
 
         });
 
-
         $(".select2").select2();
 
     </script>
-
-    
 </body>
 
 </html>

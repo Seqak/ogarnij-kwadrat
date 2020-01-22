@@ -3,7 +3,6 @@ session_start();
 require_once("../model/flatdel.php");
 
 $flatId = $_GET['flatId'];
-
 $ids = explode(" ", $flatId);
 
 $flatId = $ids[0];
@@ -19,3 +18,4 @@ $delFlat->deleteFlat($flatId, $addressId, $infoId);
 
 header("Location: flatlist.php");
 
+?>

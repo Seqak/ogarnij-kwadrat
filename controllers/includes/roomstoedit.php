@@ -4,6 +4,7 @@ namespace Controllers\Includes\RoomsToEdit;
 
 class RoomsToEdit{
 
+    //Method that checks and count amount of rooms. Result is, how many rooms add/delete.
     public function roomsAmount($oldAmount, $newAmount){
 
         $result = array();
@@ -22,9 +23,5 @@ class RoomsToEdit{
 
             return $result;
         }
-
-
     }
-
-
 }

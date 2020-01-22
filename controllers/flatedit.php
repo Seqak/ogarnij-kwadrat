@@ -8,7 +8,6 @@ use Controllers\Includes\DataSanitaze as DataSanitaze;
 use Controllers\Includes\FormValidate as FormValidate;
 use Controllers\Includes\FlatType as FlatType;
 use Controllers\Includes\RoomsToEdit as RoomsToEdit;
-// require_once('../model/flattransaction.php');
 require_once('../model/includes/flatlistrecord.php');
 
 
@@ -25,6 +24,7 @@ if( isset($_GET['lang'])){
 $lang = new App\Change\Language\Language();
 $translateArray = $lang->checkLanguage();
 
+//Set session variables required to edit data.
 if (isset($_GET['flatId'])) {
     $flatId = $_GET['flatId'];
     $_SESSION['editflat_id'] = $flatId;
@@ -44,12 +44,12 @@ for ($i=0; $i <= 4 ; $i++) {
     $errors[] = false;
 }
 
+//Get data to fill info fileds in form.
 $getFlatRecords = new GetFlatRecords();
 $flatRecord = $getFlatRecords->getOneRecord($_SESSION['editflat_id']);
-// echo "<pre>"; print_r($flatRecord); echo "</pre>";
 
 $flatsObjArray = new flatListRecord();
-
+//Model to dispaly info from db to form fields.
 $flatsObjArray->setFlatId($flatRecord['flat_id']);
 $flatsObjArray->setAddressId($flatRecord['address_id']);
 $flatsObjArray->setInfoId($flatRecord['info_id']);
@@ -60,8 +60,6 @@ $flatsObjArray->setRooms($flatRecord['COUNT(r.flat_id)']);
 $flatsObjArray->setAddInfo($flatRecord['content']);
 
 $_SESSION['roomsAmount'] = $flatsObjArray->rooms;
-
-// echo "<pre>"; print_r($flatsObjArray); echo "</pre>";
 
 if (isset($_POST['editFlat-submit'])) {
 
@@ -87,36 +85,35 @@ if (isset($_POST['editFlat-submit'])) {
         $roomsIds = array(0) ;
     }
 
-    // echo "<pre>"; print_r($roomsIds); echo "</pre>";
-    $editTransactions = new editflattransaction(); 
+    if ($isErro == false) {
 
-    $roomsToEdit = new RoomsToEdit\RoomsToEdit();
-    $roomsAmount = $roomsToEdit->roomsAmount($_SESSION['roomsAmount'], $sanitased[4]);
-    
+        $editTransactions = new editflattransaction(); 
 
-    if ($type == 4) {
-        $editTransactions->editFlatTransFour($sanitased, $roomsIds, $_SESSION['info_id'], $_SESSION['editflat_id'], $_SESSION['address_id']);
-        header("Location: flatlist.php");
-    }
-    elseif ($type == 3) {
-
-        $txt = $sanitased[3];
-        $editTransactions->editFlatTransThree($sanitased, $roomsIds, $_SESSION['info_id'], $_SESSION['editflat_id'], $_SESSION['address_id']);
-        header("Location: flatlist.php");
-       
-    }
-    elseif ($type == 2) {
+        $roomsToEdit = new RoomsToEdit\RoomsToEdit();
+        $roomsAmount = $roomsToEdit->roomsAmount($_SESSION['roomsAmount'], $sanitased[4]);
         
-        $editTransactions->editFlatTransTwo($sanitased, $roomsIds, $_SESSION['info_id'],$_SESSION['editflat_id'], $_SESSION['address_id'], $roomsAmount, $_SESSION['roomsAmount']);
-        header("Location: flatlist.php");
-        
-    }
-    elseif ($type == 1) {
-        
-    }
+        if ($type == 4) {
+            $editTransactions->editFlatTransFour($sanitased, $roomsIds, $_SESSION['info_id'], $_SESSION['editflat_id'], $_SESSION['address_id']);
+            header("Location: flatlist.php");
+        }
+        elseif ($type == 3) {
 
-    // echo "<pre>"; print_r($sanitased[4]); echo "</pre>";
-    
+            $editTransactions->editFlatTransThree($sanitased, $roomsIds, $_SESSION['info_id'], $_SESSION['editflat_id'], $_SESSION['address_id']);
+            header("Location: flatlist.php");
+        
+        }
+        elseif ($type == 2) {
+            
+            $editTransactions->editFlatTransTwo($sanitased, $roomsIds, $_SESSION['info_id'],$_SESSION['editflat_id'], $_SESSION['address_id'], $roomsAmount, $_SESSION['roomsAmount']);
+            header("Location: flatlist.php");
+            
+        }
+        elseif ($type == 1) {
+            $editTransactions->editFlatTransOne($sanitased, $roomsIds, $_SESSION['info_id'],$_SESSION['editflat_id'], $_SESSION['address_id'], $roomsAmount, $_SESSION['roomsAmount']);
+            header("Location: flatlist.php");
+        }
+
+    }
     
 }
 
@@ -128,27 +125,7 @@ echo $twig->render('editflat.html', array(
     'translate' =>  $translateArray ?? null,
     'flat' => $flatsObjArray,
     'errors' => $errors,
-    'update' => $_SESSION['editflat_id'] ?? null,
 ));
-
-
-/*
-*
-*           EDYTOWANIE REKORDÓW
-*
-*   Pkt 7. 
-*
-*
-*
-*
-*
-*
-*
-*/
-
-
-
-
 
 
 ?>

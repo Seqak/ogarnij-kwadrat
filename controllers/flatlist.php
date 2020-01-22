@@ -22,8 +22,7 @@ $translateArray = $lang->checkLanguage();
 
 if (isset($_SESSION['flatAddStatus'])) {
     $flatAddStatus = $_SESSION['flatAddStatus'];
-    unset($_SESSION['flatAddStatus']);
-    
+    unset($_SESSION['flatAddStatus']); 
 }
 
 $getFlatRecords = new GetFlatRecords();
@@ -55,7 +54,7 @@ $twig = new Twig_Environment($loader);
 
 echo $twig->render('flatlist.html', array(
     'translate' =>  $translateArray ?? null,
-    'flatz' => $flatsObjArray,
+    'flats' => $flatsObjArray,
     'flatAdded' => $flatAddStatus ?? null,
 
 ));
