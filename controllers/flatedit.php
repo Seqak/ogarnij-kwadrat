@@ -7,6 +7,7 @@ require_once('../model/editflattransaction.php');
 use Controllers\Includes\DataSanitaze as DataSanitaze;
 use Controllers\Includes\FormValidate as FormValidate;
 use Controllers\Includes\FlatType as FlatType;
+use Controllers\Includes\RoomsToEdit as RoomsToEdit;
 // require_once('../model/flattransaction.php');
 require_once('../model/includes/flatlistrecord.php');
 
@@ -58,6 +59,8 @@ $flatsObjArray->setNumber($flatRecord['number']);
 $flatsObjArray->setRooms($flatRecord['COUNT(r.flat_id)']);
 $flatsObjArray->setAddInfo($flatRecord['content']);
 
+$_SESSION['roomsAmount'] = $flatsObjArray->rooms;
+
 // echo "<pre>"; print_r($flatsObjArray); echo "</pre>";
 
 if (isset($_POST['editFlat-submit'])) {
@@ -87,8 +90,11 @@ if (isset($_POST['editFlat-submit'])) {
     // echo "<pre>"; print_r($roomsIds); echo "</pre>";
     $editTransactions = new editflattransaction(); 
 
+    $roomsToEdit = new RoomsToEdit\RoomsToEdit();
+    $roomsAmount = $roomsToEdit->roomsAmount($_SESSION['roomsAmount'], $sanitased[4]);
+    
+
     if ($type == 4) {
-        // 1. Usuwamy pokoje 2. Usuwamy dodatkowe info. 3. Update adresu.
         $editTransactions->editFlatTransFour($sanitased, $roomsIds, $_SESSION['info_id'], $_SESSION['editflat_id'], $_SESSION['address_id']);
         header("Location: flatlist.php");
     }
@@ -101,12 +107,15 @@ if (isset($_POST['editFlat-submit'])) {
     }
     elseif ($type == 2) {
         
+        $editTransactions->editFlatTransTwo($sanitased, $roomsIds, $_SESSION['info_id'],$_SESSION['editflat_id'], $_SESSION['address_id'], $roomsAmount, $_SESSION['roomsAmount']);
+        header("Location: flatlist.php");
+        
     }
     elseif ($type == 1) {
         
     }
 
-    // echo "<pre>"; print_r($sanitased); echo "</pre>";
+    // echo "<pre>"; print_r($sanitased[4]); echo "</pre>";
     
     
 }
