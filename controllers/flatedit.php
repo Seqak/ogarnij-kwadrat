@@ -82,7 +82,7 @@ if (isset($_POST['editFlat-submit'])) {
         $roomsIds = $getFlatRecords->getRoomsAmount($_SESSION['editflat_id']);
     }
     else{
-        $roomsIds = array(0) ;
+        $roomsIds = array(0);
     }
 
     if ($isErro == false) {
@@ -112,9 +112,7 @@ if (isset($_POST['editFlat-submit'])) {
             $editTransactions->editFlatTransOne($sanitased, $roomsIds, $_SESSION['info_id'],$_SESSION['editflat_id'], $_SESSION['address_id'], $roomsAmount, $_SESSION['roomsAmount']);
             header("Location: flatlist.php");
         }
-
-    }
-    
+    }   
 }
 
 

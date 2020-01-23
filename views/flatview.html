@@ -35,7 +35,7 @@
 
         {% include 'includes/header.html' %}
   
-        <!-- {% include 'includes/sidemenu.html' %} -->
+        {% include 'includes/sidemenu.html' %}
 
         <div class="page-wrapper">
 
@@ -45,7 +45,7 @@
                 <!-- ============================================================== -->
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title m-b-0  m-t-0">Edytuj mieszkanie</h3>
+                        <h3 class="card-title m-b-0  m-t-0">Podgląd mieszkania</h3>
                         <div class="col-12 d-flex no-block align-items-center">
                         </div>
                     </div>
@@ -54,78 +54,40 @@
                 <div class="row">
                     <div class="col-md-6">
 
-                        <form class="form-horizontal" action="../controllers/flatedit.php" method="POST">
+                        <form class="form-horizontal">
 
                             <div class="card">
                                 <div class="card-body">
 
                                     <!-- CITY -->
-                                    {% if errors.0 == true %}
+                                    
                                         <div class="form-group">
                                             <label>{{translate.Miasto}}*</label>
-                                            <input type="text" class="form-control is-invalid" name="city" value="{{ flat.city }}">
-                                            <div class="invalid-feedback">
-                                                {{translate.Pole_Miasto_nie_może_być_puste}}
-                                            </div> 
+                                            <input type="text" class="form-control" name="city" value="{{ flat.city }}" disabled>
                                         </div>
-                                    {% else %}
-                                        <div class="form-group">
-                                            <label>{{translate.Miasto}}*</label>
-                                            <input type="text" class="form-control" name="city" value="{{ flat.city }}">
-                                        </div>
-                                    {% endif %}
+                                   
 
                                     <!-- STREET -->
-                                    {% if errors.1 == true %}
+                                    
                                         <div class="form-group">
                                             <label>{{translate.Ulica}}*</label>
-                                            <input type="text" class="form-control is-invalid" name="street" value="{{ flat.street }}">
-                                            <div class="invalid-feedback">
-                                                {{translate.Pole_Ulica_nie_może_być_puste}}
-                                            </div>
+                                            <input type="text" class="form-control" name="street" value="{{ flat.street }}" disabled>
                                         </div>
-                                    {% else %}
-                                        <div class="form-group">
-                                            <label>{{translate.Ulica}}*</label>
-                                            <input type="text" class="form-control" name="street" value="{{ flat.street }}">
-                                        </div>
-                                    {% endif %}
+                                    
 
                                     <!-- NUMBER -->
-                                    {% if errors.2 == true %}
+                                    
                                         <div class="form-group">
                                             <label>{{translate.Numer_mieszkania}}*</label>
-                                            <input type="text" class="form-control is-invalid" name="flat-number" value="{{ flat.number }}">
-                                            <div class="invalid-feedback">
-                                                {{translate.Pole_Numer_mieszkania_nie_może_być_puste}}
-                                            </div>
+                                            <input type="text" class="form-control" name="flat-number" value="{{ flat.number }}" disabled>
                                         </div>
-                                    {% else %}
-                                        <div class="form-group">
-                                            <label>{{translate.Numer_mieszkania}}*</label>
-                                            <input type="text" class="form-control" name="flat-number" value="{{ flat.number }}">
-                                        </div>
-                                    {% endif %}
+                                    
 
                                     <!-- ROOMS -->
                                     {% if flat.rooms == 0 %}
-                                        {% if errors.4 == true %}
+                                    
                                             <div class="custom-control custom-checkbox mr-sm-2">
-                                                <input type="checkbox" class="custom-control-input" id="customControlAutosizing2" name="flat-checkbox" checked>
-                                                <label class="custom-control-label" for="customControlAutosizing2">{{translate.Mieszkanie_z_pokojami_na_wynajem}}</label> <br>
-                                                <small>{{translate.Zaznacz_jeśli_w_danym_mieszakniu_wynajmujesz_pokoje_różnym_najemcom}}</small>
-                                            </div>
-                                            
-                                            <div class="form-group m-t-15">
-                                                <label id="roomamount">{{translate.Ilość_pokoi}}</label>
-                                                <input type="number" class="form-control is-invalid" name="rooms" id="roomsinput" value="1" min="1" style="border-color: #e9ecef">
-                                                <div class="invalid-feedback">
-                                                    {{translate.Podaj_właściwą_ilość_pokoi}}
-                                                </div>
-                                            </div>
-                                        {% else %}
-                                            <div class="custom-control custom-checkbox mr-sm-2">
-                                                <input type="checkbox" class="custom-control-input" id="customControlAutosizing2" name="flat-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="customControlAutosizing2" name="flat-checkbox" disabled>
                                                 <label class="custom-control-label" for="customControlAutosizing2">{{translate.Mieszkanie_z_pokojami_na_wynajem}}</label> <br>
                                                 <small>{{translate.Zaznacz_jeśli_w_danym_mieszakniu_wynajmujesz_pokoje_różnym_najemcom}}</small>
                                             </div>
@@ -134,24 +96,23 @@
                                                 <label id="roomamount">{{translate.Ilość_pokoi}}</label>
                                                 <input type="number" class="form-control" disabled name="rooms" id="roomsinput" value="" min="1">
                                             </div>
-                                        {% endif %}
                                     {% else %}
                                     <div class="custom-control custom-checkbox mr-sm-2">
-                                        <input type="checkbox" class="custom-control-input" id="customControlAutosizing2" name="flat-checkbox" checked>
+                                        <input type="checkbox" class="custom-control-input" id="customControlAutosizing2" name="flat-checkbox" checked disabled>
                                         <label class="custom-control-label" for="customControlAutosizing2">{{translate.Mieszkanie_z_pokojami_na_wynajem}}</label> <br>
                                         <small>{{translate.Zaznacz_jeśli_w_danym_mieszakniu_wynajmujesz_pokoje_różnym_najemcom}}</small>
                                     </div>
 
                                     <div class="form-group m-t-15">
                                         <label id="roomamount">{{translate.Ilość_pokoi}}</label>
-                                        <input type="number" class="form-control" name="rooms" id="roomsinput" value="{{ flat.rooms }}" min="1">
+                                        <input type="number" class="form-control" name="rooms" id="roomsinput" value="{{ flat.rooms }}" min="1" disabled>
                                     </div>
                                 {% endif %}
 
                                     <!-- ADDITIONAL INFO -->
                                      <div class="form-group m-t-15">
                                         <label>{{translate.Informacja_dodatkowa}}</label>
-                                        <textarea class="form-control" rows=4 name="additional-info">{{ flat.addInfo }}</textarea>
+                                        <textarea class="form-control" rows=4 name="additional-info" disabled>{{ flat.addInfo }}</textarea>
                                     </div>
                             
                                 </div>
@@ -159,8 +120,8 @@
 
                                 <div class="border-top">
                                     <div class="card-body">
-                                        <button type="submit" class="btn btn-info" name="editFlat-submit">{{translate.Zapisz}}</button>
-                                        <a href="../controllers/flatlist.php" class="btn btn-secondary">{{translate.Anuluj}}</a>
+                                    
+                                        <a href="../controllers/flatlist.php" class="btn btn-info">Wróć</a>
 
                                     </div>
                                 </div>
@@ -188,9 +149,6 @@
     <script src="../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
     <script src="../assets/extra-libs/sparkline/sparkline.js"></script>
 
-    <script src="../assets/libs/select2/dist/js/select2.full.min.js"></script>
-    <script src="../assets/libs/select2/dist/js/select2.min.js"></script>
-
     <!--Wave Effects -->
     <script src="../dist/js/waves.js"></script>
     <!--Menu sidebar -->
@@ -199,23 +157,6 @@
     <script src="../dist/js/custom.min.js"></script>
    
     <script>
-
-        $('#customControlAutosizing2').change(function(){
-
-            if ($('#customControlAutosizing2').is(':checked') == true){
-                $('#roomsinput').prop('disabled', false);
-                $('#roomamount').text('{{translate.Ilość_pokoi}}*');
-                $('#roomsinput').val('1');
-            } 
-            else {
-                $('#roomsinput').prop('disabled', true);
-                $('#roomamount').text('{{translate.Ilość_pokoi}}');
-                $('#roomsinput').val(' ');
-            }
-
-        });
-
-        $(".select2").select2();
 
     </script>
 </body>
