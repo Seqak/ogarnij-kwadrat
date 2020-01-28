@@ -64,7 +64,7 @@
                                         
                                             <select class="select2 form-control m-t-15"style="height: 36px;width: 100%;" name="faultType">
                                                 {% for type in types %}
-                                               <option value="{{ type.type_value}}">{{ type.type_name}}</option>
+                                               <option value="{{ type.type_id}}">{{ type.type_name}}</option>
                                                {% endfor %}
                                            </select>
                                            
@@ -84,20 +84,27 @@
                                     <label>Mieszkanie</label>
                                         <select class="select2 form-control m-t-15"style="height: 36px;width: 100%;" name="flat">
 
-                                            <option value="Kromera1">Wrocław, Kromera 12A/5</option>
-                                            <option value="Kromera2">Kromera 2</option>
-                                            <option value="Kromera3">Kromera 3</option>
-                                            <option value="Kromera4">Kromera 4</option>
-                                            <option value="Kromera5">Kromera 5</option>
-                                            
+                                            {% for flat in flats %}
+                                                <option value="{{ flat.addressId}}">{{ flat.city }}, {{ flat.street }}/{{ flat.number }}</option>
+                                            {% endfor %}
                                        </select>
                                     </div>
                                     
                                     <!-- ADDITIONAL INFO -->
+                                    {% if erro == true %}
+                                    <div class="form-group m-t-15">
+                                        <label>Opis usterki*</label>
+                                        <textarea class="form-control is-invalid" rows=4 name="additional-info"></textarea>
+                                        <div class="invalid-feedback">
+                                            Pole Opis usterki nie może być puste
+                                        </div>
+                                    </div>
+                                    {% else %}
                                      <div class="form-group m-t-15">
-                                        <label>Opis usterki</label>
+                                        <label>Opis usterki*</label>
                                         <textarea class="form-control" rows=4 name="additional-info"></textarea>
                                     </div>
+                                    {% endif %}
                             
                                 </div>
 

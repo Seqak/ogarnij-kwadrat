@@ -115,6 +115,35 @@ class FormValidate{
         }
         return $erro;
     }
+
+
+
+    //Faults
+
+    public function faultDescription($arg){
+
+        if (count($arg) == 4) {
+            if (empty($arg[2])) {
+                
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        elseif (count($arg) == 5) {
+            if (empty($arg[3])) {
+                
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+    }
+
+    
 }
 
 

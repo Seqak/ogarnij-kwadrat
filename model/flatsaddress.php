@@ -1,36 +1,21 @@
 <?php
 
 class FlatsAddress extends DBconnect{
-    private $addressId;
-    private $city;
-    private $street;
-    private $number;
+    public $addressId;
+    public $city;
+    public $street;
+    public $number;
 
-    public function setAddressId(){
-
+    public function setAddressId($arg){
+        $this->addressId = $arg;
     }
-    public function setCity(){
-
+    public function setCity($arg){
+        $this->city = $arg;
     }
-    public function setStreet(){
-
+    public function setStreet($arg){
+        $this->street = $arg;
     }
-    public function setNumber(){
-
-    }
-
-    
-
-    public function getAddressId(){
-        
-    }
-    public function getCity(){
-        
-    }
-    public function getStreet(){
-        
-    }
-    public function getNumber(){
-        
+    public function setNumber($arg){
+        $this->number = $arg;
     }
 }

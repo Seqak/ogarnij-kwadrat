@@ -4,7 +4,7 @@ class Faulttypes extends DBconnect{
 
     public function getTypes(){
 
-        $query = $this->connect()->query("SELECT * FROM faults_types");
+        $query = $this->connect()->query("SELECT * FROM faults_types ORDER BY type_name ASC");
         $numRows = $query->rowCount();
 
         if ($numRows > 0) {
