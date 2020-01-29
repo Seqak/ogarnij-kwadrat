@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    {% include 'includes/favicon.html' %}
+    <title>{{translate.Lista_mieszkań}} - Ogarnij Kwadrat</title>
+    <!-- Custom CSS -->
+    <link href="../dist/css/style.min.css" rel="stylesheet">
+    <link href="../../assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
+    <link href="../assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
+    
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<style>
+    tr:hover{
+        background-color: #f7f7f7;
+    }
+
+    #zero_config_filter{
+        text-align: right;
+    }
+
+    .dataTables_filter input{ 
+        width: 200px;
+        border-color: #dee2e6;
+        
+    }
+
+</style>
+</head>
+
+<body>
+
+    <!-- Preloader - style you can find in spinners.css -->
+    {% include 'includes/preloader.html' %}
+    <div id="main-wrapper">
+
+        <!-- Include header -->
+        {% include 'includes/header.html' %}
+        <!-- Include sidemenu -->
+        <!-- {% include 'includes/sidemenu.html' %} -->
+
+        <div class="page-wrapper">
+            <!-- Start Page Content -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title m-b-0">Lista usterek </h3>
+                    </div>
+                </div>
+
+                <div class="row">
+                    
+                    
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <a href="../controllers/newfault.php" class="btn btn-info m-10">Dodaj usterkę</a>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+
+                            <div class="table-responsive">
+                                <table id="zero_config" class="table" style="border: 1px solid #dee2e6;">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col"><b>Data</b></th>
+                                            <th scope="col" class=""><b>Mieszkanie</b></th>
+                                            <th scope="col" class="text-center"><b>Użytkownik</b></th>
+                                            <th scope="col" class="text-center"><b>Status</b></th>
+                                            <th scope="col" class="text-center"><b>Typ usterki</b></th>
+                                            <th scope="col"></th>
+                                            <th scope="col"><b></b></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="customtable">
+                                        {% for item in faults %}
+                                            
+                                        <tr>                                    
+                                            <input class="faultId" name="faultId" type="hidden" value="item.faultId">
+                                            <td>{{ item.data }}</td>
+                                            <td >{{ item.city }}, {{ item.street }}/{{ item.number }}</td>
+                                            <td class="text-center">{{ item.userName }} {{item.userSurname}}</td>
+                                            <td class="text-center">
+                                                {% if item.statusId == 1 %}
+                                                    <span class="label label-warning">{{ item.statusName }}</span>
+                                                {% elseif item.statusId == 2 %}
+                                                    <span class="label label-info">{{ item.statusName }}</span>
+                                                    {% elseif item.statusId == 3 %}
+                                                    <span class="label label-success">{{ item.statusName }}</span>
+                                                {% endif %}
+                                            </td>
+                                            <td class="text-center">
+                                                {{ item.typeName }}
+                                            </td>
+                                            <td>
+
+                                                {% if item.critical == 1 %}
+                                                    <span class="label label-danger"><b>!</b></span>
+                                                {% else %}
+                                                    
+                                                {% endif %}
+                                                
+                                            </td>
+                                            <td class="text-right">
+                                                <div class="btn-group">
+                                                    
+                                                    <a class="btn btn-dark btn-sm" href="../controllers/flatview.php?flatId={{item.flatId}}&address={{item.addressId}}&infoId={{item.infoId}}"><i class="fas fa-eye"></i></a>
+
+                                                    <a class="btn btn-dark btn-sm" href="../controllers/flatedit.php?flatId={{item.flatId}}&address={{item.addressId}}&infoId={{item.infoId}}" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fas fa-pencil-alt"></i></a>
+
+                                                    <button type="button" class="cid btn btn-danger btn-sm checked" onClick='removeRow("{{ item.flatId }} {{ item.addressId }} {{ item.infoId }}")'><i class="fas fa-trash-alt"></i></button>
+                                                </div>
+                                            </td>    
+                                        </tr>      
+                                        
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+            <!-- END Page Content -->
+            <!-- ============================================================== -->
+        
+
+        <!-- End Container fluid  -->
+        <!-- footer -->
+        {% include 'includes/footer.html' %}
+        <!-- End footer -->
+
+    </div>
+
+
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="../assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="../assets/extra-libs/sparkline/sparkline.js"></script>
+    <!--Wave Effects -->
+    <script src="../dist/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="../dist/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="../dist/js/custom.min.js"></script>
+    <script src="../assets/extra-libs/DataTables/datatables.min.js"></script>
+
+    <script src="../assets/libs/toastr/build/toastr.min.js"></script>
+    <script>
+        $('#zero_config').DataTable();
+
+
+            function removeRow(flatId, addressId, infoId){
+            console.log(flatId, addressId, infoId);
+                swal({
+                    title: "Usunąć to mieszkanie?",
+                    text: "Wybrane mieszkanie zostanie całkowicie usunięte z bazy danych.",
+                    icon: "warning",
+                    buttons: ["Anuluj", "Usuń"],
+                    dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            $.get("flatdelete.php", {
+                                flatId: flatId,
+                                addressId: addressId,
+                                infoId: infoId
+                            }, function(){
+                                location.reload();
+                            });
+                        } else {
+                            
+                        }
+                    });
+            };
+    </script>
+
+    
+    {% if faultAdded == 1 %}
+        <script>
+            toastr.success('Usterka została pomyślnie dodana do bazy.', { timeOut: 1500, showDuration: 700, opacity: 1});
+        </script>
+    {% endif %}
+    
+</body>
+
+</html>
+
