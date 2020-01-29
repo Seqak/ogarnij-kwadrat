@@ -35,10 +35,10 @@ class NewFaultTransaction extends DBconnect{
             
 
         } catch (\Exception $e) {
-            // if ($pdo->inTransaction()) {
-            //     $pdo->rollback();
-            // }
-            // throw $e;
+            if ($pdo->inTransaction()) {
+                $pdo->rollback();
+            }
+            throw $e;
         }
     }
 

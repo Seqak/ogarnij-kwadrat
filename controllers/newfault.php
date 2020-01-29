@@ -70,19 +70,18 @@ if (isset($_POST['addFault-submit'])) {
             $faultData = array( $sanitazed[0], $sanitazed[1], $sanitazed[2], $_SESSION['user_id'], $date, $critical);
 
             $transaction->addFault($faultData);
-        
+            header("Location: faultlist.php");
+            $_SESSION['faultAddStatus'] = 1;
 
         }else{
             $faultData = array( $sanitazed[0], $sanitazed[2], $sanitazed[3], $_SESSION['user_id'], $date, $critical);
 
             $transaction->addFault($faultData);
-    
+            header("Location: faultlist.php");
+            $_SESSION['faultAddStatus'] = 1;
         }
 
     }
-    // echo "<pre>";
-    // var_dump($faultData);echo "</pre>";
-    // echo "<pre>"; print_r($sanitazed);  echo "</pre>";
 }
 
 
