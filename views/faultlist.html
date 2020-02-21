@@ -55,7 +55,7 @@
         <!-- Include header -->
         {% include 'includes/header.html' %}
         <!-- Include sidemenu -->
-        <!-- {% include 'includes/sidemenu.html' %} -->
+        {% include 'includes/sidemenu.html' %}
 
         <div class="page-wrapper">
             <!-- Start Page Content -->
@@ -94,7 +94,7 @@
                                             <th scope="col" class="text-center"><b>Użytkownik</b></th>
                                             <th scope="col" class="text-center"><b>Status</b></th>
                                             <th scope="col" class="text-center"><b>Typ usterki</b></th>
-                                            <th scope="col"></th>
+                                            <th scope="col" ></th>
                                             <th scope="col"><b></b></th>
                                         </tr>
                                     </thead>
@@ -108,7 +108,7 @@
                                             <td class="text-center">{{ item.userName }} {{item.userSurname}}</td>
                                             <td class="text-center">
                                                 {% if item.statusId == 1 %}
-                                                    <span class="label label-warning">{{ item.statusName }}</span>
+                                                    <span class="label label-rounded label-warning" style="color: #333;">{{ item.statusName }}</span>
                                                 {% elseif item.statusId == 2 %}
                                                     <span class="label label-info">{{ item.statusName }}</span>
                                                     {% elseif item.statusId == 3 %}
@@ -118,10 +118,13 @@
                                             <td class="text-center">
                                                 {{ item.typeName }}
                                             </td>
-                                            <td>
+
+                                            
+                                            <td class="text-center">
 
                                                 {% if item.critical == 1 %}
-                                                    <span class="label label-danger"><b>!</b></span>
+                                                    <!-- <span class="label label-danger"><b>!</b></span> -->
+                                                    <span style="color:#da542e; font-size: 20px;" data-toggle="tooltip" data-placement="top" title="Krytyczna"><i class="m-r-10 mdi mdi-alert-circle"></i></span>
                                                 {% else %}
                                                     
                                                 {% endif %}
@@ -134,7 +137,7 @@
 
                                                     <a class="btn btn-dark btn-sm" href="../controllers/flatedit.php?flatId={{item.flatId}}&address={{item.addressId}}&infoId={{item.infoId}}" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fas fa-pencil-alt"></i></a>
 
-                                                    <button type="button" class="cid btn btn-danger btn-sm checked" onClick='removeRow("{{ item.flatId }} {{ item.addressId }} {{ item.infoId }}")'><i class="fas fa-trash-alt"></i></button>
+                                                    <button type="button" class="cid btn btn-danger btn-sm checked" onClick='removeRow("{{ item.flatId }} {{ item.addressId }} {{ item.infoId }}")' data-toggle="tooltip" data-placement="top" title="Usuń"><i class="fas fa-trash-alt"></i></button>
                                                 </div>
                                             </td>    
                                         </tr>      
